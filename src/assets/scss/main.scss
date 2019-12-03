@@ -1,0 +1,53 @@
+@import "settings/colors.scss";
+@import "animations/animations.scss";
+
+body {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff1c1c+0,ff5656+100 */
+  background: #ff1c1c; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #ff1c1c 0%,
+    #ff5656 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #ff1c1c 0%,
+    #ff5656 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ff1c1c 0%,
+    #ff5656 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1c1c', endColorstr='#ff5656',GradientType=0 ); /* IE6-9 */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: auto;
+  padding: 10px 0;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}

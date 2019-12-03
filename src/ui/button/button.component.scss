@@ -1,0 +1,27 @@
+.ripple {
+  background-position: center;
+  transition: background 0.3s;
+}
+
+.ripple:hover {
+  background: #fff radial-gradient(circle, transparent 1%, #fff 1%)
+    center/15000%;
+}
+.ripple:active {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Button style */
+button {
+  border: none;
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #2196f3;
+  outline: none;
+}
