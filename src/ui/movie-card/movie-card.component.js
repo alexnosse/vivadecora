@@ -21,7 +21,13 @@ const MovieCard = ({
       let i = 0;
       let hearts = [];
       while (i < 5) {
-        hearts.push(<img key={i} src={i < filledCount ? filled : heart} />);
+        hearts.push(
+          <img
+            key={i}
+            src={i < filledCount ? filled : heart}
+            alt={`Média de Votos ${filledCount} de 5`}
+          />
+        );
         i++;
       }
 
@@ -42,13 +48,13 @@ const MovieCard = ({
 
         <div className="sinopsis-container">
           <span className="sinopsis">{movie.overview}</span>
-          <a aria-label="Read Sinopsis" onClick={onClickSinopsis}>
+          <a href="#" aria-label="Read Sinopsis" onClick={onClickSinopsis}>
             Ver Sinopse
           </a>
         </div>
       </div>
 
-      <div class="buttons-container">
+      <div className="buttons-container">
         <button
           className="dislike"
           type="button"
