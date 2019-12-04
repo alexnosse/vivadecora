@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRoutes, A, usePath } from "hookrouter";
+import { connect } from "react-redux";
 
 import logo from "../../../assets/images/logo-viva-decora.png";
+
+import { getMovies, getMovie } from "../../../actions/movies";
 
 import SideMenu from "../../side-menu/side-menu.component";
 import MoviesPage from "../movies/movies.page";
@@ -16,7 +19,17 @@ const routes = {
   "/movies/:id": ({ id }) => <MovieDetailPage id={id} />,
 };
 
-function Home() {
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = {
+  getMovies,
+};
+
+const Home = props => {
+  const { getMovies } = props;
+
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const path = usePath();
   const routeResult = useRoutes(routes);
@@ -25,7 +38,12 @@ function Home() {
     setIsMenuOpened(!isMenuOpened);
   };
 
-  console.log("paht ", path);
+  useEffect(
+    () => {
+      getMovies("https://api.themoviedb.org/4/list/126912");
+    },
+    [getMovies]
+  );
 
   return (
     <>
@@ -69,6 +87,9 @@ function Home() {
       </div>
     </>
   );
-}
+};
 
-export default Home;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

@@ -1,0 +1,112 @@
+.movie-card {
+  max-width: calc(100% - 20px);
+  .container {
+    color: white;
+    background-position: 0 0;
+    height: 350px;
+    border-radius: 5px;
+    width: 294px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 224px 40px 40px 40px;
+    position: relative;
+    align-items: center;
+
+    > .background {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      z-index: 4;
+    }
+    > .backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      z-index: 5;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(255, 255, 255, 0.5) 90%
+      );
+    }
+
+    .rating-container {
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+      > .hearts {
+        display: flex;
+        padding-left: 10px;
+        > img {
+          margin-right: 5px;
+        }
+      }
+      > .counter {
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        font-weight: 600;
+        font-size: 14px;
+        text-align: end;
+        padding-right: 10px;
+      }
+    }
+    .title {
+      z-index: 6;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+      padding: 0 10px;
+      text-transform: uppercase;
+    }
+
+    .sinopsis-container {
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      padding: 0 10px;
+      > .sinopsis {
+        max-width: 162px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        font-weight: 600;
+      }
+
+      > a {
+        text-decoration: underline;
+        color: var(--red-primary);
+      }
+    }
+  }
+
+  > .buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 12px;
+    justify-content: center;
+    padding: 30px 10px;
+
+    > .like,
+    > .dislike {
+      background: white;
+      border-radius: 50%;
+    }
+
+    > .skip {
+      border-radius: 40px;
+      background: white;
+      text-transform: uppercase;
+      color: black;
+    }
+  }
+}

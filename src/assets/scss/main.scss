@@ -46,6 +46,7 @@ body {
       display: initial;
     }
     > ul {
+      padding: 0;
       height: 100%;
       list-style-type: none;
       display: grid;
@@ -64,10 +65,21 @@ body {
         > a {
           text-decoration: none;
           color: white;
+          position: relative;
+          &:after {
+            content: " ";
+            height: 2px;
+            width: 2px;
+            background-color: transparent;
+            position: relative;
+            margin: 4px auto;
+            display: block;
+          }
 
-          border-bottom: 2px solid transparent;
-          &.-active {
-            border-bottom-color: white;
+          &.-active:after {
+            transition: 0.3s width ease-in-out;
+            background-color: white;
+            width: 100%;
           }
         }
       }
