@@ -10,9 +10,12 @@ import moment from "moment";
 const initialState = {
   collection: [],
   isFetched: false,
+  isGenresFetched: false,
   url: "https://api.themoviedb.org/4/list/126912",
+  genres: [],
 };
 const momentDateFormat = "YYYY-MM-DD hh:mm:ss";
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_MOVIES_REQUEST:
@@ -69,6 +72,7 @@ export default function(state = initialState, action) {
           return movie;
         }),
       };
+
     default:
       return state;
   }

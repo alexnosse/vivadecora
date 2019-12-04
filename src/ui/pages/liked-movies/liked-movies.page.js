@@ -5,8 +5,8 @@ import moment from "moment";
 import { getMovies } from "../../../actions/movies";
 
 import "./liked-movies.page.scss";
-import filled from "../../../assets/images/favorite_filled.png";
-import heart from "../../../assets/images/favorite.png";
+import Hearts from "../../hearts/hearts.component";
+import camera from "../../../assets/images/video-camera-vazio.png";
 
 const mapStateToProps = state => {
   const { collection } = state.movies;
@@ -15,34 +15,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  getMovies,
-};
-
 const momentDateFormat = "YYYY-MM-DD hh:mm:ss";
-const renderHearts = movie => {
-  if (movie) {
-    const filledCount = Math.ceil(movie.vote_average / 2);
-    let i = 0;
-    let hearts = [];
-    while (i < 5) {
-      hearts.push(
-        <img
-          key={i}
-          src={i < filledCount ? filled : heart}
-          alt={`Média de Votos ${filledCount} de 5`}
-        />
-      );
-      i++;
-    }
-
-    return hearts;
-  }
-};
 
 const LikedMoviesPage = ({ collection, liked }) => {
+  let movies = [];
   const moviesRender = () => {
-    return collection
+    movies = collection
       .filter(item => {
         if (liked) {
           return item.liked;
@@ -66,21 +44,30 @@ const LikedMoviesPage = ({ collection, liked }) => {
           <li className="movie_item" key={movie.id} style={background}>
             <div className="backdrop" />
             <h5>{movie.title}</h5>
-            <div className="hearts">{renderHearts(movie)}</div>
+            <Hearts movie={movie} />
           </li>
         );
       });
   };
 
+  moviesRender();
+
   return (
     <div className="movies-container">
       <h3>{`Filmes ${liked ? "" : "Não"} Curtidos`}</h3>
-      <ul>{moviesRender()}</ul>
+      {movies.length > 0 && <ul>{movies}</ul>}
+      {movies.length === 0 && (
+        <div className="no-movies">
+          <img src={camera} />
+          <br />
+          <h3> NENHUM FILME</h3>
+        </div>
+      )}
     </div>
   );
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {}
 )(LikedMoviesPage);

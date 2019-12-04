@@ -7,12 +7,24 @@
     text-transform: uppercase;
     padding-top: 15px;
   }
+
+  .no-movies {
+    display: flex;
+    flex-direction: column;
+    > img {
+      margin: 0 auto;
+      width: 80vw;
+    }
+    > h3 {
+      text-align: center;
+    }
+  }
   > ul {
     list-style: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 
     > .movie_item {
       width: 145px;
@@ -27,6 +39,15 @@
       padding: 0 10px;
       box-sizing: border-box;
       position: relative;
+      margin: 0 10px 15px 0;
+
+      &:nth-child(even) {
+        margin-right: 0;
+
+        @media (min-width: 321px) {
+          margin: 0 10px 15px 0;
+        }
+      }
 
       > .backdrop {
         position: absolute;
@@ -52,10 +73,6 @@
       }
       > .hearts {
         z-index: 6;
-        > img {
-          margin-right: 5px;
-          width: 20px;
-        }
       }
     }
   }

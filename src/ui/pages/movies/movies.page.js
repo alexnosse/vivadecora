@@ -18,7 +18,9 @@ const mapDispatchToProps = {
 
 const MoviesPage = props => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { collection, likeMovie, dislikeMovie } = props;
+
+  const { collection, likeMovie, dislikeMovie, onClickOpenModal } = props;
+
   let movies = collection.filter(item => !item.liked && !item.disliked) || [];
 
   const nextMovie = () => {
@@ -35,6 +37,9 @@ const MoviesPage = props => {
       return (
         <MovieCard
           movie={movie}
+          onClickSinopsis={() => {
+            onClickOpenModal(movie);
+          }}
           onClickLike={() => {
             likeMovie(movie.id);
             nextMovie();
