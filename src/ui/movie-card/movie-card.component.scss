@@ -47,13 +47,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-content: center;
-      > .hearts {
-        display: flex;
-        padding-left: 10px;
-        > img {
-          margin-right: 5px;
-        }
-      }
+      padding-left: 10px;
+
       > .counter {
         text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
         font-weight: 600;
