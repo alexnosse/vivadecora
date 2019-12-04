@@ -28,26 +28,97 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: auto;
-  padding: 10px 0;
-}
+.page {
+  overflow-x: hidden;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px auto;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  @media (min-width: 321px) {
+    grid-template-rows: 60px 60px auto;
+  }
 
-.App-link {
-  color: #09d3ac;
+  > .desktop-menu {
+    display: none;
+
+    @media (min-width: 321px) {
+      display: initial;
+    }
+    > ul {
+      height: 100%;
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: center;
+      grid-gap: 30px;
+
+      > li {
+        display: inline;
+        text-transform: uppercase;
+        color: white;
+
+        font-weight: bold;
+        font-size: 17px;
+        > a:visited,
+        > a {
+          text-decoration: none;
+          color: white;
+
+          border-bottom: 2px solid transparent;
+          &.-active {
+            border-bottom-color: white;
+          }
+        }
+      }
+    }
+  }
+  .header {
+    text-align: center;
+    width: 100vw;
+  }
+
+  .logo {
+    height: auto;
+    padding: 10px 0;
+    > img {
+      width: 140px;
+    }
+  }
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .App-link {
+    color: #09d3ac;
+  }
+
+  .page-content {
+    width: 100vw;
+    animation: slidetoleft 0.2s ease-out forwards, fadein 0.2s ease-out forwards;
+    padding: 0 10px;
+
+    &.-show {
+      animation: slidetoright 0.2s ease-out forwards,
+        fadein 0.2s ease-out forwards;
+      padding-left: 85vw;
+      width: 200vw;
+    }
+
+    @media (min-width: 321px) {
+      &.-show {
+        animation: none;
+        padding-left: 0;
+        width: 100vw;
+      }
+    }
+  }
 }
