@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import logo from "../../../assets/images/logo-viva-decora.png";
 
-import { getMovies, getMovie } from "../../../actions/movies";
+import { getMovies } from "../../../actions/movies";
 
 import SideMenu from "../../side-menu/side-menu.component";
 import MoviesPage from "../movies/movies.page";
@@ -14,8 +14,8 @@ import MovieDetailPage from "../movie-detail/movie-detail.page";
 
 const routes = {
   "/": () => <MoviesPage />,
-  "/liked": () => <LikedMoviesPage />,
-  "/disliked": () => <DislikedMoviesPage />,
+  "/liked": () => <LikedMoviesPage liked={true} />,
+  "/disliked": () => <LikedMoviesPage liked={false} />,
   "/movies/:id": ({ id }) => <MovieDetailPage id={id} />,
 };
 

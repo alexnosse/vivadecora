@@ -36,11 +36,11 @@ const MoviesPage = props => {
         <MovieCard
           movie={movie}
           onClickLike={() => {
-            likeMovie(currentIndex);
+            likeMovie(movie.id);
             nextMovie();
           }}
           onClickDislike={() => {
-            dislikeMovie(currentIndex);
+            dislikeMovie(movie.id);
             nextMovie();
           }}
           onClickSkip={() => {

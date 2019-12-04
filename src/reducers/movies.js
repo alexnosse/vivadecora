@@ -11,8 +11,6 @@ const initialState = {
   collection: [],
   isFetched: false,
   url: "https://api.themoviedb.org/4/list/126912",
-  currentMovie: null,
-  isMovieFetched: false,
 };
 const momentDateFormat = "YYYY-MM-DD hh:mm:ss";
 export default function(state = initialState, action) {
@@ -49,8 +47,8 @@ export default function(state = initialState, action) {
     case LIKE_MOVIE:
       return {
         ...state,
-        collection: state.collection.map((movie, index) => {
-          if (index === action.index) {
+        collection: state.collection.map(movie => {
+          if (movie.id === action.id) {
             movie.liked = true;
             movie.disliked = false;
             movie.dateUpdated = moment().format(momentDateFormat);
@@ -62,10 +60,10 @@ export default function(state = initialState, action) {
     case DISLIKE_MOVIE:
       return {
         ...state,
-        collection: state.collection.map((movie, index) => {
-          if (index === action.index) {
+        collection: state.collection.map(movie => {
+          if (movie.id === action.id) {
             movie.disliked = true;
-            movie.liked = true;
+            movie.liked = false;
             movie.dateUpdated = moment().format(momentDateFormat);
           }
           return movie;

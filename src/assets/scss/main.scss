@@ -92,7 +92,7 @@ body {
 
   .logo {
     height: auto;
-    padding: 10px 0;
+    padding-top: 22px;
     > img {
       width: 140px;
     }
@@ -116,13 +116,12 @@ body {
   .page-content {
     width: 100vw;
     animation: slidetoleft 0.2s ease-out forwards, fadein 0.2s ease-out forwards;
-    padding: 0 10px;
+    height: 100%;
 
     &.-show {
       animation: slidetoright 0.2s ease-out forwards,
         fadein 0.2s ease-out forwards;
-      padding-left: 85vw;
-      width: 200vw;
+      padding-left: 80vw;
     }
 
     @media (min-width: 321px) {

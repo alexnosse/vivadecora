@@ -21,16 +21,16 @@ export const getMovies = url => dispatch => {
   });
 };
 
-export const likeMovie = index => dispatch => {
+export const likeMovie = id => dispatch => {
   return dispatch({
     type: LIKE_MOVIE,
-    index,
+    id,
   });
 };
 
-export const dislikeMovie = index => dispatch => {
+export const dislikeMovie = id => dispatch => {
   return dispatch({
     type: DISLIKE_MOVIE,
-    index,
+    id,
   });
 };
