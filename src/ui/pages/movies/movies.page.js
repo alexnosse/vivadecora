@@ -1,28 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getMovies, getMovie } from "../../../actions/movies";
+import { getMovies, likeMovie, dislikeMovie } from "../../../actions/movies";
+import MovieCard from "../../movie-card/movie-card.component";
 
 const mapStateToProps = state => {
-  const { collection, currentMovie } = state.movies;
+  const { collection } = state.movies;
   return {
     collection,
-    currentMovie,
   };
 };
 
 const mapDispatchToProps = {
   getMovies,
-  getMovie,
+  likeMovie,
+  dislikeMovie,
 };
 
 const MoviesPage = props => {
-  const { getMovies, currentMovie } = props;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const { collection, likeMovie, dislikeMovie } = props;
+  let movies = collection.filter(item => !item.liked && !item.disliked) || [];
 
-  useEffect(() => {
-    getMovies("https://api.themoviedb.org/4/list/126912");
-  }, []);
+  const nextMovie = () => {
+    if (currentIndex < movies.length) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0);
+    }
+  };
 
-  return <div className="movies"> Movies Page =3</div>;
+  const moviesRender = () => {
+    const movie = movies[currentIndex];
+    if (movie) {
+      return (
+        <MovieCard
+          movie={movie}
+          onClickLike={() => {
+            likeMovie(currentIndex);
+            nextMovie();
+          }}
+          onClickDislike={() => {
+            dislikeMovie(currentIndex);
+            nextMovie();
+          }}
+          onClickSkip={() => {
+            nextMovie();
+          }}
+        />
+      );
+    }
+  };
+
+  return <div className="movies"> {moviesRender()}</div>;
 };
 
 export default connect(
