@@ -9,7 +9,7 @@ const Button = ({ onClick, label, image, classNames }) => {
       onClick={onClick}
       aria-label={label}
     >
-      {!image ? label : <img src={image} />}
+      {!image ? label : <img src={image} alt={label} />}
     </button>
   );
 };

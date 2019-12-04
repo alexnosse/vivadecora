@@ -5,10 +5,10 @@
 
   position: fixed;
   top: 0;
-  left: calc((100% - 90px) * -1);
-  width: 80%;
+  left: calc((110% - 90px) * -1);
+  width: 90vw;
   height: 100vh;
-
+  z-index: 100;
   display: grid;
   grid-template-columns: 90% auto;
   animation: slidetoleft 0.2s ease-out forwards, fadein 0.2s ease-out forwards;
@@ -19,7 +19,7 @@
     left: 0;
   }
 
-  .content {
+  > .content {
     @media (min-width: 321px) {
       display: none;
     }
@@ -55,7 +55,7 @@
       display: none;
     }
 
-    padding-top: 22px;
+    padding-top: 10px;
 
     > .button {
       background-color: transparent;
